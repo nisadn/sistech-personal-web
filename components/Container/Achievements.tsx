@@ -3,14 +3,13 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 
 const Achievements = () => {
     return (
-        <Flex w='100vw' bg='special.200' pt='5%' pb='10%' px='20%' direction={'column'}>
+        <Flex w='100vw' bg='special.200' pt='6%' pb='10%' px='20%' direction={'column'} id='Achievements'>
             <Flex mb={8}>
                 <Text 
                     fontFamily={'heading'} 
                     textAlign={'center'} 
                     w='100%' 
                     fontSize={'3xl'}
-                    id='Achievements'
                 >Achievements</Text>
             </Flex>
             <Flex direction={'column'} gap={6}>

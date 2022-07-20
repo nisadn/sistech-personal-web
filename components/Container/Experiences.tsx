@@ -4,15 +4,14 @@ import { StyledWaves } from "../StyledComponents";
 
 const Experiences = () => {
     return (
-        <StyledWaves bgImg="/waves2.svg" bgColor="#F1FAEE" height="100%">
-            <Flex pt='2%' pb='10%' px='20%' direction={'column'}>
+        <StyledWaves bgImg="/waves2.svg" bgColor="#F1FAEE" height="100%" id="Experiences">
+            <Flex pb='10%' pt='6%' px='20%' direction={'column'}>
                 <Flex mb={8}>
                     <Text 
                         fontFamily={'heading'} 
                         textAlign={'center'} 
                         w='100%' 
                         fontSize={'3xl'}
-                        id='Experiences'
                     >Experiences</Text>
                 </Flex>
                 <Grid
