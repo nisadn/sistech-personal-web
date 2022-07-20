@@ -18,7 +18,7 @@ const Profile = () => {
                 <Flex w={'60vw'}>
                     <Center flexDirection={'column'} color='custom.300' textAlign={'left'}>
                         <Text pt={10} w='100%' fontSize={30}>HI THERE,</Text>
-                        <Text w='100%' fontFamily='heading' fontWeight='bold' fontSize={40} color='custom.400'>I'm Annisa Dian Nugrahani</Text>
+                        <Text w='100%' fontFamily='heading' fontWeight='bold' fontSize={40} color='custom.400'>I&apos;m Annisa Dian Nugrahani</Text>
                         <Text w='100%' fontSize={20}>a Final Year Computer Science Student</Text>
                         <Text w='100%' fontSize={20}>at Universitas Indonesia</Text>
                     </Center>
