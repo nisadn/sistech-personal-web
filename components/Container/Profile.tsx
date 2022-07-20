@@ -1,5 +1,6 @@
-import { Box, Button, Center, Container, Flex, Heading, Image, Text } from "@chakra-ui/react"
+import { Box, Center, Container, Flex, LinkOverlay, Text } from "@chakra-ui/react"
 import { RedButton, ToscaButton } from "../Button/CustomButton";
+import { StyledWaves } from "../StyledComponents";
 import styled from 'styled-components';
 
 interface SProps {
@@ -7,8 +8,13 @@ interface SProps {
 }
 
 const Profile = () => {
+
+    // const handleClick = (targetId: string) => {
+    //     window.location.href=`${targetId}`;
+    // }
+
     return (
-        <StyledWaves bgImg="/waves3.svg">
+        <StyledWaves bgImg="/waves3.svg" bgColor="#A8DADC">
         <Flex w={'100vw'} h={'100vh'} maxWidth={'100%'} position={'relative'} direction='column'>
             <Flex h='70%'>
                 <Flex w={'40vw'} position='relative'>
@@ -26,8 +32,12 @@ const Profile = () => {
             <Flex h='30%'>
                 <Container w='100%' zIndex={0} centerContent>
                     <Flex gap={4}>
-                    <ToscaButton>Experiences</ToscaButton>
-                    <RedButton>Achievements</RedButton>
+                        <Box as='a' href="#Experiences">
+                            <ToscaButton>Experiences</ToscaButton>
+                        </Box>
+                        <Box as='a' href="#Achievements">
+                            <RedButton>Achievements</RedButton>
+                        </Box>
                     </Flex>
                 </Container>
             </Flex>
@@ -37,16 +47,6 @@ const Profile = () => {
 }
 
 export default Profile;
-
-const StyledWaves = styled.div<Pick<SProps, 'bgImg'>>`
-    background-color: #A8DADC;
-    background-image: url('${(props: any) => props.bgImg}');
-    background-position: center bottom;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-`
 
 const ProfImg = styled.div<SProps>`
     background-image: url('${(props: any) => props.bgImg}');

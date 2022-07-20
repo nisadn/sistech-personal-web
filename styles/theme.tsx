@@ -33,6 +33,7 @@ const customTheme = extendTheme({
     md: "16px",
     lg: "18px",
     xl: "20px",
+    '2xl': "24px",
   },
 })
 
