@@ -1,19 +1,18 @@
 import { Box, Button, Center, Container, Flex, Heading, Image, Text } from "@chakra-ui/react"
 import { RedButton, ToscaButton } from "../Button/CustomButton";
+import styled from 'styled-components';
+
+interface SProps {
+    bgImg: string;
+}
 
 const Profile = () => {
     return (
-        <Flex w={'100vw'} h={'100vh'} bg={'custom.200'} maxWidth={'100%'} position={'relative'} direction='column'>
+        <StyledWaves bgImg="/waves3.svg">
+        <Flex w={'100vw'} h={'100vh'} maxWidth={'100%'} position={'relative'} direction='column'>
             <Flex h='70%'>
                 <Flex w={'40vw'} position='relative'>
-                    <Image
-                        position={'absolute'}
-                        right={0}
-                        bottom={0}
-                        src='/profile.png'
-                        boxSize='300px'
-                        objectFit='cover'
-                    />
+                    <ProfImg bgImg="/photo.png" />
                 </Flex>
                 <Flex w={'60vw'}>
                     <Center flexDirection={'column'} color='custom.300' textAlign={'left'}>
@@ -25,11 +24,6 @@ const Profile = () => {
                 </Flex>
             </Flex>
             <Flex h='30%'>
-                <Image
-                    bottom={0}
-                    position={'absolute'}
-                    src='/waves3.svg'
-                />
                 <Container w='100%' zIndex={0} centerContent>
                     <Flex gap={4}>
                     <ToscaButton>Experiences</ToscaButton>
@@ -38,7 +32,28 @@ const Profile = () => {
                 </Container>
             </Flex>
         </Flex>
+        </StyledWaves>
     )
 }
 
 export default Profile;
+
+const StyledWaves = styled.div<Pick<SProps, 'bgImg'>>`
+    background-color: #A8DADC;
+    background-image: url('${(props: any) => props.bgImg}');
+    background-position: center bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+`
+
+const ProfImg = styled.div<SProps>`
+    background-image: url('${(props: any) => props.bgImg}');
+    background-position: right bottom;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    height: 85%;
+    width: 90%;
+    border-radius: 50px;
+`
