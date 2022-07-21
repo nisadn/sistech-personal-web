@@ -94,7 +94,9 @@ const Blog = () => {
             </Flex>
             <Flex direction={'column'} gap={6}>
                 {blogs.map((val: BlogT) => (
-                    <BlogBox id={val.id} title={val.title} content={val.content} like={val.like} />
+                    <Box key={val.id}>
+                        <BlogBox id={val.id} title={val.title} content={val.content} like={val.like} />
+                    </Box>
                 ))}
             </Flex>
         </Flex>
@@ -102,8 +104,6 @@ const Blog = () => {
 }
 
 export default Blog;
-
-const content = 'content content content content content content content content content content content cont content content content content content content content content content content content content ';
 
 const blogs: BlogT[] = [
     {
