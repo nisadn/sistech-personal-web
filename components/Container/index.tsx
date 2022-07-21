@@ -6,3 +6,6 @@ export { default as Experiences } from './Experiences';
 
 export * from './Achievements';
 export { default as Achievements } from './Achievements';
+
+export * from './Blog';
+export { default as Blog } from './Blog';

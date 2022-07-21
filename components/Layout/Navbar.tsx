@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react"
+import { Box, Button, Flex } from "@chakra-ui/react"
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -29,17 +29,28 @@ const Navbar = () => {
             document.addEventListener("scroll", handleScroll);
         }
 
-            // Remove the event listener on unmount
-            return () => {
-                if (document) {
-                    document.removeEventListener("scroll", handleScroll);
-                }
-            };
+        // Remove the event listener on unmount
+        return () => {
+            if (document) {
+                document.removeEventListener("scroll", handleScroll);
+            }
+        };
     }, [setIsShadowVisible]);
 
 
     return (
-        <StyledNavbar isShadowVisible={isShadowVisible}>
+            <Box 
+                display='flex' 
+                position='fixed' 
+                w='100%' 
+                zIndex={3} 
+                backdropFilter={'blur(8px)'}
+                gap={4}
+                boxShadow={isShadowVisible ? 'md' : undefined}
+                transition='0.3s'
+                px={4} py={3}
+                justifyContent='flex-end'
+            >
             <Button
                 as='a'
                 variant='ghost'
@@ -51,7 +62,7 @@ const Navbar = () => {
             <Button
                 as='a'
                 variant='ghost'
-                href='/'
+                href='/blog'
             >
                 Blog
             </Button>
@@ -63,21 +74,8 @@ const Navbar = () => {
             >
                 Contact Me
             </Button>
-        </StyledNavbar>
+            </Box>
     )
 }
 
 export default Navbar;
-
-const StyledNavbar = styled.div<NavProps>`
-    backdrop-filter: blur(8px);
-    padding: 12px;
-    position: fixed;
-    z-index: 3;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    box-shadow: ${(props: any) => props.isShadowVisible && '0 0 .5em rgba(0, 0, 0, .5)'};
-    transition: 0.3s;
-    gap: 10px;
-`
