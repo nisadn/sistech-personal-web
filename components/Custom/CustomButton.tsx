@@ -6,12 +6,14 @@ interface CustomProps {
     color?: string;
     children: any;
     onClick?: any;
+    w?: any;
 }
 
 interface BProps {
     children: any;
     size?: string;
     onClick?: any;
+    w?: any;
 }
 
 const CustomButton = (props: CustomProps) => {
@@ -32,6 +34,7 @@ const CustomButton = (props: CustomProps) => {
                 bg:`${props.bg.active}`
             }}
             onClick={props.onClick}
+            w={props.w}
         >
             {props.children}
         </Button>
@@ -40,13 +43,19 @@ const CustomButton = (props: CustomProps) => {
 
 const ToscaButton = (props: BProps) => {
     return (
-        <CustomButton bg={{default: 'custom.300', hover: 'custom.301', active: 'custom.302'}} size={props.size}>{props.children}</CustomButton>
+        <CustomButton bg={{default: 'custom.300', hover: 'custom.301', active: 'custom.302'}} 
+            size={props.size} w={props.w} onClick={props.onClick}>
+                {props.children}
+        </CustomButton>
     )
 }
 
 const RedButton = (props: BProps) => {
     return (
-        <CustomButton bg={{default: 'custom.500', hover: 'custom.501', active: 'custom.502'}}>{props.children}</CustomButton>
+        <CustomButton bg={{default: 'custom.500', hover: 'custom.501', active: 'custom.502'}} 
+            size={props.size} w={props.w} onClick={props.onClick}>
+                {props.children}
+        </CustomButton>
     )
 }
 

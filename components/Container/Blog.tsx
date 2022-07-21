@@ -1,8 +1,9 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { LessButton, MoreButton, ToscaButton } from "../Custom/CustomButton";
 import { BiEdit, BiLike } from 'react-icons/bi';
 import CustomIcon from "../Custom/CustomIcon";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import BlogModal from "../Custom/BlogModal";
 
 type BlogT = {
     id: string;
@@ -35,6 +36,8 @@ const BlogBox = (props: BlogT) => {
         setIsReadMore(!isReadMore);
     };
 
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const finalRef = useRef(null)
 
     return (
         <Box boxShadow='md' bg='white' borderRadius='10px' py={4} px={6} color='custom.400' key={props.id} fontSize='md' 
@@ -47,7 +50,8 @@ const BlogBox = (props: BlogT) => {
                     <Text fontFamily={'heading'} fontWeight='extrabold' fontSize='md'>{props.title}</Text>
                 </Flex>
                 <Flex align='center'>
-                    <CustomIcon as={BiEdit} color='custom.300' activeCol="custom.302" />
+                    <CustomIcon as={BiEdit} onClick={onOpen} color='custom.300' activeCol="custom.302" />
+                    <BlogModal isOpen={isOpen} onClose={onClose} finalRef={finalRef} isUpdate defaultContent={props.content} defaultTitle={props.title} />
                 </Flex>
                 <LikeIcon like={props.like} />
             </Flex>
@@ -79,6 +83,9 @@ const BlogBox = (props: BlogT) => {
 
 const Blog = () => {
 
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const finalRef = useRef(null)
+
     return (
         <Flex direction={'column'} w='100vw' minH='100vh' px='10%' py='6%' bg='custom.100'>
             <Flex mb={2}>
@@ -90,7 +97,8 @@ const Blog = () => {
                     >Blog</Text>
             </Flex>
             <Flex mb={8} justifyContent='center'>
-                <ToscaButton>ADD BLOG</ToscaButton>
+                <ToscaButton onClick={onOpen}>ADD BLOG</ToscaButton>
+                <BlogModal isOpen={isOpen} onClose={onClose} finalRef={finalRef} />
             </Flex>
             <Flex direction={'column'} gap={6}>
                 {blogs.map((val: BlogT) => (
