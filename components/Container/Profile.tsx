@@ -1,5 +1,5 @@
 import { Box, Center, Container, Flex, Text } from "@chakra-ui/react"
-import { RedButton, ToscaButton } from "../Button/CustomButton";
+import { RedButton, ToscaButton } from "../Custom/CustomButton";
 import { StyledWaves } from "../StyledComponents";
 import styled from 'styled-components';
 
@@ -29,10 +29,10 @@ const Profile = () => {
                 <Container w='100%' zIndex={0} centerContent>
                     <Flex gap={4}>
                         <Box as='a' href="#Experiences">
-                            <ToscaButton>Experiences</ToscaButton>
+                            <ToscaButton>EXPERIENCES</ToscaButton>
                         </Box>
                         <Box as='a' href="#Achievements">
-                            <RedButton>Achievements</RedButton>
+                            <RedButton>ACHIEVEMENTS</RedButton>
                         </Box>
                     </Flex>
                 </Container>

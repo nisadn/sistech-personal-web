@@ -1,6 +1,5 @@
-import { Box, Button, Flex } from "@chakra-ui/react"
+import { Box, Button } from "@chakra-ui/react"
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 
 interface NavProps {
     isShadowVisible: boolean;
@@ -17,7 +16,7 @@ const Navbar = () => {
         // Define a function that is called when the scroll event fires
         const handleScroll = (e: any) => {
             const scrollTop = e.target.documentElement.scrollTop;
-            if (scrollTop > 200) {
+            if (scrollTop > 100) {
                 setIsShadowVisible(true);
             } else {
                 setIsShadowVisible(false);
