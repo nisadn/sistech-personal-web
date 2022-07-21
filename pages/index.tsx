@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Heading, Square, Text } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import { Achievements, Experiences, Profile } from '../components/Container'
 import Layout from '../components/Layout/Layout'

@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Grid, GridItem, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+import { Flex, Grid, GridItem, Text } from "@chakra-ui/react";
 import styled from "styled-components";
 import { StyledWaves } from "../StyledComponents";
 

@@ -1,4 +1,4 @@
-import { Box, Center, Container, Flex, LinkOverlay, Text } from "@chakra-ui/react"
+import { Box, Center, Container, Flex, Text } from "@chakra-ui/react"
 import { RedButton, ToscaButton } from "../Button/CustomButton";
 import { StyledWaves } from "../StyledComponents";
 import styled from 'styled-components';
@@ -8,10 +8,6 @@ interface SProps {
 }
 
 const Profile = () => {
-
-    // const handleClick = (targetId: string) => {
-    //     window.location.href=`${targetId}`;
-    // }
 
     return (
         <StyledWaves bgImg="/waves3.svg" bgColor="#A8DADC">

@@ -1,4 +1,4 @@
-import { Button, Flex, Link } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react"
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
