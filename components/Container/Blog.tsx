@@ -28,7 +28,7 @@ const Blog = () => {
     const finalRef = useRef(null);
 
     return ( 
-        <Flex direction={'column'} w='100vw' minH='100vh' px='10%' py='6%' bg='custom.100'>
+        <Flex direction={'column'} w='100vw' minH='100vh' px={['5%','10%','10%']} py={['18%','18%','6%']} bg='custom.100'>
             <Flex mb={2}>
                 <Text
                     fontFamily={'heading'} 

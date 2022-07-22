@@ -5,7 +5,7 @@ import { StyledWaves } from "../StyledComponents";
 const Experiences = () => {
     return (
         <StyledWaves bgImg="/waves2.svg" bgColor="#F1FAEE" height="100%" id="Experiences">
-            <Flex pb='10%' pt='6%' px='20%' direction={'column'}>
+            <Flex pb={['25%','25%','10%']} pt={['21%','21%','6%']} px={['5%', '10%', '20%']} direction={'column'}>
                 <Flex mb={8}>
                     <Text 
                         fontFamily={'heading'} 
@@ -23,16 +23,17 @@ const Experiences = () => {
                     {exp.map((val: Exp, index: number) => (
                         <GridItem key={index}>
                         <Grid 
-                            templateColumns={'1fr 0.15fr 2.85fr'}
+                            templateColumns={['0.25fr 0.75fr 3fr', '0.25fr 0.75fr 3fr', '1fr 0.15fr 2.85fr']}
                             gap={4}
                         >
-                            <GridItem textAlign={'right'}>{val.year}</GridItem>
-                            <GridItem>
+                            <GridItem display={['none', 'none', 'block']} textAlign={'right'}>{val.year}</GridItem>
+                            <GridItem pt='2'>
                                 <StyleBullet />
                                 {!val.isLast && <LongLine />}
                             </GridItem>
-                            <GridItem>
+                            <GridItem colSpan={[2,2,1]}>
                                 <Flex direction={'column'}>
+                                    <Flex display={['flex','flex','none']}>{val.year}</Flex>
                                     <Flex fontFamily={'heading'} fontSize='md' fontWeight={'bold'} color='custom.400'>{val.title.toUpperCase()}</Flex>
                                     <Flex color='custom.500'>{val.company}</Flex>
                                     {val.desc && <Flex fontSize='sm'>{val.desc}</Flex>}
@@ -88,7 +89,7 @@ const exp: Exp[] = [
         year: 'JAN 2021 - JUN 2022',
         title: 'TEACHING ASSISTANT',
         company: 'Faculty of Computer Science, Universitas Indonesia',
-        desc: 'Discrete Mathematics 1, Integrated Personality Development, Data Structure & Algorithm, Programming Foundations 1',
+        desc: 'Discrete Mathematics 1, Integrated Personality Development, Data Structures & Algorithms, Programming Foundations 1',
     },{
         year: 'FEB 2021 - JAN 2022 ',
         title: 'HEAD OF MEDIA BUREAU',

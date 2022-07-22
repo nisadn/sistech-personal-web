@@ -51,7 +51,7 @@ const BlogModal = (props: IModal) => {
     };
 
     return (
-        <Modal size='xl' finalFocusRef={props.finalRef} isOpen={props.isOpen} onClose={props.onClose}>
+        <Modal size={['xs','xl','3xl']} finalFocusRef={props.finalRef} isOpen={props.isOpen} onClose={props.onClose}>
             <ModalOverlay />
             <ModalContent>
             <ModalHeader>
@@ -80,6 +80,7 @@ const BlogModal = (props: IModal) => {
                     <Textarea
                         defaultValue={props.defaultContent}
                         placeholder='Insert content here'
+                        minHeight={['300px','300px','250px']}
                         {...register("content", {required: true})}
                     />
                     <FormErrorMessage>This field is required</FormErrorMessage>
