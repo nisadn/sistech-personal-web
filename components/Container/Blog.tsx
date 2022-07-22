@@ -2,8 +2,9 @@ import { Box, Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { LessButton, MoreButton, ToscaButton } from "../Custom/CustomButton";
 import { BiEdit, BiLike } from 'react-icons/bi';
 import CustomIcon from "../Custom/CustomIcon";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BlogModal from "../Custom/BlogModal";
+import { blogApi } from "../../config/service/blogApi";
 
 type BlogT = {
     id: string;
@@ -12,13 +13,16 @@ type BlogT = {
     like: number;
 }
 
-const LikeIcon = ({like}: {like: number}) => {
+const LikeIcon = ({id, like}: {id: string, like: number}) => {
 
     const [likes, setLikes] = useState(like);
 
     const handleLike = () => {
-        setLikes(likes+1);
-        console.log(likes);
+        const likeBlog = async (data: any) => {
+            blogApi.like(data).then((res) => setLikes(res.like));
+        }
+        
+        likeBlog({id});
     };
 
     return (
@@ -51,9 +55,9 @@ const BlogBox = (props: BlogT) => {
                 </Flex>
                 <Flex align='center'>
                     <CustomIcon as={BiEdit} onClick={onOpen} color='custom.300' activeCol="custom.302" />
-                    <BlogModal isOpen={isOpen} onClose={onClose} finalRef={finalRef} isUpdate defaultContent={props.content} defaultTitle={props.title} />
+                    <BlogModal id={props.id} isOpen={isOpen} onClose={onClose} finalRef={finalRef} isUpdate defaultContent={props.content} defaultTitle={props.title} />
                 </Flex>
-                <LikeIcon like={props.like} />
+                <LikeIcon id={props.id} like={props.like} />
             </Flex>
             {props.content.length > 300 ? 
             <Flex direction='column' gap={2}>
@@ -83,10 +87,21 @@ const BlogBox = (props: BlogT) => {
 
 const Blog = () => {
 
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await blogApi.get();
+            setData(res);
+        };
+
+        fetchData();
+    }, []);
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const finalRef = useRef(null)
 
-    return (
+    return ( data &&
         <Flex direction={'column'} w='100vw' minH='100vh' px='10%' py='6%' bg='custom.100'>
             <Flex mb={2}>
                 <Text
@@ -101,7 +116,7 @@ const Blog = () => {
                 <BlogModal isOpen={isOpen} onClose={onClose} finalRef={finalRef} />
             </Flex>
             <Flex direction={'column'} gap={6}>
-                {blogs.map((val: BlogT) => (
+                {data.map((val: BlogT) => (
                     <Box key={val.id}>
                         <BlogBox id={val.id} title={val.title} content={val.content} like={val.like} />
                     </Box>
@@ -112,32 +127,3 @@ const Blog = () => {
 }
 
 export default Blog;
-
-const blogs: BlogT[] = [
-    {
-        id: '1',
-        title: 'tes blog',
-        content: 'ok',
-        like: 0,
-    },{
-        id: '2',
-        title: 'Tes Blog Capitalized',
-        content: 'content content content content content content content content content content content cont content content content content content content content content content content content content content content content content content content content content content content content cont content content content content content content content content content content content contentcontent content content content content content content content content content content cont content content content content content content content content content content content content ',
-        like: 0,
-    },{
-        id: '3',
-        title: 'Tes blog panjang',
-        content: 'content content content content content content content content content content content cont content content content content content content content content content content content content content content content content content content content content content content content cont content content content content content content content content content content content contentcontent content content content content content content content content content content cont content content content content content content content content content content content content ',
-        like: 0,
-    },{
-        id: '4',
-        title: 'Tes blog sedikit',
-        content: 'yak ini blog',
-        like: 0,
-    },{
-        id: '5',
-        title: 'ini tes lgi',
-        content: 'lorem ipsum sir dolor amet',
-        like: 0,
-    }
-];

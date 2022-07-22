@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react"
+import { Button, Flex } from "@chakra-ui/react"
 
 interface CustomProps {
     bg: any;
@@ -22,7 +22,6 @@ const CustomButton = (props: CustomProps) => {
     return (
         <Button 
             borderRadius={'full'} 
-            pt={1}
             bg={props.bg.default} 
             color={props.color ? props.color : 'white'}  
             fontWeight={'regular'}
@@ -39,7 +38,9 @@ const CustomButton = (props: CustomProps) => {
             w={props.w}
             type={props.type}
         >
-            {props.children}
+            <Flex pt='5%' >
+                {props.children}
+            </Flex>
         </Button>
     )
 }
