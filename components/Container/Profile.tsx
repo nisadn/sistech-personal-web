@@ -1,11 +1,8 @@
 import { Box, Center, Container, Flex, Text } from "@chakra-ui/react"
 import { RedButton, ToscaButton } from "../Blog";
 import { StyledWaves } from "../StyledComponents";
-import styled from 'styled-components';
+import { ProfImg, ProfImgResp } from "../StyledComponents";
 
-interface SProps {
-    bgImg: string;
-}
 
 const Profile = () => {
 
@@ -46,24 +43,3 @@ const Profile = () => {
 }
 
 export default Profile;
-
-const ProfImg = styled.div<SProps>`
-    background-image: url('${(props: any) => props.bgImg}');
-    background-position: right center;
-    background-size: 50%;
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 100%;
-    border-radius: 50px;
-`
-
-const ProfImgResp = styled.div<SProps>`
-    background-image: url('${(props: any) => props.bgImg}');
-    // margin-top: 30px;
-    background-position: center bottom;
-    background-size: 40%;
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 100%;
-    border-radius: 50px;
-`
