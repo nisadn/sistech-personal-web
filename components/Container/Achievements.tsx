@@ -10,6 +10,7 @@ const Achievements = () => {
                     textAlign={'center'} 
                     w='100%' 
                     fontSize={'3xl'}
+                    color='custom.400'
                 >Achievements</Text>
             </Flex>
             <Flex direction={'column'} gap={6}>

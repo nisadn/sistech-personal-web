@@ -5,7 +5,7 @@ import Layout from '../components/Layout/Layout'
 
 const Home: NextPage = () => {
   return (
-    <Layout>
+    <Layout page='home' >
       <Flex direction={'column'}>
         <Profile />
         <Experiences />

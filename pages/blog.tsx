@@ -4,7 +4,7 @@ import Layout from "../components/Layout/Layout";
 
 const BlogPage = () => {
     return (
-        <Layout>
+        <Layout page='blog' >
             <Blog />
         </Layout>
     )

@@ -12,6 +12,7 @@ const Experiences = () => {
                         textAlign={'center'} 
                         w='100%' 
                         fontSize={'3xl'}
+                        color='custom.400'
                     >Experiences</Text>
                 </Flex>
                 <Grid

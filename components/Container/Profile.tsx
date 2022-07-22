@@ -1,5 +1,5 @@
 import { Box, Center, Container, Flex, Text } from "@chakra-ui/react"
-import { RedButton, ToscaButton } from "../Custom/CustomButton";
+import { RedButton, ToscaButton } from "../Blog";
 import { StyledWaves } from "../StyledComponents";
 import styled from 'styled-components';
 

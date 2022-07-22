@@ -1,11 +1,16 @@
 import { Flex } from "@chakra-ui/react"
 import Navbar from "./Navbar"
 
+type LProps = {
+    children: any;
+    page: string;
+}
 
-const Layout = ({children}: {children: any}) => {
+const Layout = (props: LProps) => {
+    const { children, page } = props;
     return (
         <Flex>
-            <Navbar />
+            <Navbar page={page} />
             {children}
         </Flex>
     )

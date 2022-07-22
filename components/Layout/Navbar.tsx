@@ -1,11 +1,9 @@
-import { Box, Button } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 import { useEffect, useState } from "react";
+import { NavbarMenu } from "../Common";
 
-interface NavProps {
-    isShadowVisible: boolean;
-}
-
-const Navbar = () => {
+const Navbar = (props: any) => {
+    const { page } = props;
 
     // src: https://stackoverflow.com/questions/60906086/changing-css-of-element-on-page-scroll
     
@@ -49,30 +47,13 @@ const Navbar = () => {
                 transition='0.3s'
                 px={4} py={3}
                 justifyContent='flex-end'
+                color='custom.400'
             >
-            <Button
-                as='a'
-                variant='ghost'
-                href='/'
-            >
-                Home
-            </Button>
-
-            <Button
-                as='a'
-                variant='ghost'
-                href='/blog'
-            >
-                Blog
-            </Button>
-
-            <Button
-                as='a'
-                variant='ghost'
-                href='/'
-            >
-                Contact Me
-            </Button>
+                <Flex gap={2}>
+                <NavbarMenu href='/' isActive={page == 'home'}>Home</NavbarMenu>
+                <NavbarMenu href='/blog' isActive={page == 'blog'} >Blog</NavbarMenu>
+                <NavbarMenu href='mailto:nugrahani07@gmail.com'>Contact Me</NavbarMenu>
+                </Flex>
             </Box>
     )
 }

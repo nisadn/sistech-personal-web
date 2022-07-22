@@ -1,8 +1,9 @@
 import { Flex, FormControl, FormErrorMessage, FormLabel, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Textarea } from "@chakra-ui/react"
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { blogApi } from "../../config/service/blogApi";
-import { RedButton, ToscaButton } from "./CustomButton";
+import { RedButton, ToscaButton } from "./";
 
 type BlogT = {
     id: string;
@@ -24,6 +25,7 @@ const BlogModal = (props: IModal) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const router = useRouter();
+    const [ loadSubmit, setLoadSubmit ] = useState(false);
 
     const onSubmit = (data: any) => {
         const updateBlog = async (data: BlogT) => {
@@ -38,6 +40,7 @@ const BlogModal = (props: IModal) => {
             })
         }
 
+        setLoadSubmit(true);
         data.id = props.id;
 
         if (props.isUpdate) {
@@ -48,11 +51,11 @@ const BlogModal = (props: IModal) => {
     };
 
     return (
-        <Modal finalFocusRef={props.finalRef} isOpen={props.isOpen} onClose={props.onClose}>
+        <Modal size='xl' finalFocusRef={props.finalRef} isOpen={props.isOpen} onClose={props.onClose}>
             <ModalOverlay />
             <ModalContent>
             <ModalHeader>
-                <Flex justify='center' pt={2} fontFamily='heading'>
+                <Flex justify='center' pt={2} fontFamily='heading' color='custom.400'>
                     {props.isUpdate ? 'Update Blog': 'Add Blog'}
                 </Flex>
             </ModalHeader>
@@ -85,7 +88,7 @@ const BlogModal = (props: IModal) => {
 
             <ModalFooter>
                 <Flex w='100%' justify='center' gap={4}>
-                <ToscaButton type='submit' w='25%' >{props.isUpdate ? 'UPDATE' : 'ADD'}</ToscaButton>
+                <ToscaButton type='submit' w='25%' isLoading={loadSubmit} >{props.isUpdate ? 'UPDATE' : 'ADD'}</ToscaButton>
                 <RedButton w='25%' onClick={props.onClose} >CANCEL</RedButton>
                 </Flex>
             </ModalFooter>
