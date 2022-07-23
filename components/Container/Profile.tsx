@@ -1,10 +1,15 @@
-import { Box, Center, Container, Flex, Text } from "@chakra-ui/react"
-import { RedButton, ToscaButton } from "../Blog";
+import { Box, Center, Container, Flex, Text, useDisclosure } from "@chakra-ui/react"
+import { useRef } from "react";
+import { NavyButton, RedButton, ToscaButton } from "../Blog";
+import BioModal from "../Blog/BioModal";
 import { StyledWaves } from "../StyledComponents";
 import { ProfImg, ProfImgResp } from "../StyledComponents";
 
 
 const Profile = () => {
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const finalRef = useRef(null)
 
     return (
         <StyledWaves bgImg="/waves3.svg" bgColor="#A8DADC">
@@ -29,10 +34,14 @@ const Profile = () => {
                 <Container w='100%' zIndex={0} centerContent>
                     <Flex gap={4}>
                         <Box as='a' href="#Experiences">
-                            <ToscaButton>EXPERIENCES</ToscaButton>
+                            <NavyButton>EXPERIENCES</NavyButton>
                         </Box>
                         <Box as='a' href="#Achievements">
-                            <RedButton>ACHIEVEMENTS</RedButton>
+                            <ToscaButton>ACHIEVEMENTS</ToscaButton>
+                        </Box>
+                        <Box>
+                            <RedButton onClick={onOpen} >BIODATA</RedButton>
+                            <BioModal isOpen={isOpen} onClose={onClose} finalRef={finalRef} />
                         </Box>
                     </Flex>
                 </Container>

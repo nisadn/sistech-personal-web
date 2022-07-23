@@ -5,7 +5,7 @@ export * from './BlogModal';
 export { default as BlogModal } from './BlogModal';
 
 export * from './CustomButton';
-export { ToscaButton, RedButton, MoreButton, LessButton } from './CustomButton';
+export { NavyButton, ToscaButton, RedButton, MoreButton, LessButton } from './CustomButton';
 
 export * from './CustomIcon';
 export { default as CustomIcon } from './CustomIcon';
