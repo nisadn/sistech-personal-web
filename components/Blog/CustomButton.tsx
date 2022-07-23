@@ -50,6 +50,16 @@ const CustomButton: React.FC<CustomProps> = (props) => {
     )
 }
 
+    const NavyButton: React.FC<BProps> = (props) => {
+    const { size, w, onClick, type, children, isLoading } = props;
+    return (
+        <CustomButton bgList={{default: 'custom.400', hover: 'custom.401', active: 'custom.402'}} 
+            size={size} w={w} onClick={onClick} type={type} isLoading={isLoading}>
+                {children}
+        </CustomButton>
+    )
+}
+
 const ToscaButton: React.FC<BProps> = (props) => {
     const { size, w, onClick, type, children, isLoading } = props;
     return (
@@ -90,4 +100,4 @@ const LessButton: React.FC<BProps> = (props) => {
     )
 }
 
-export { ToscaButton, RedButton, MoreButton, LessButton }
+export { NavyButton, ToscaButton, RedButton, MoreButton, LessButton }

@@ -8,25 +8,27 @@ interface CIProps {
 }
 
 const CustomIcon = (props: CIProps) => {
+    const { as, color, activeCol, onClick } = props;
+
     return (
         <Icon 
-            as={props.as} 
+            as={as} 
             _hover={{
                 color: 'custom.100',
                 transition: '0.3s',
                 cursor: 'pointer',
-                bg: `${props.color}`
+                bg: `${color}`
             }} 
             _active={{
                 color: 'custom.102',
-                bg: `${props.activeCol}`
+                bg: `${activeCol}`
             }}
-            w='7' h='7' color={props.color} 
+            w='7' h='7' color={color} 
             p={1}
             borderRadius='full'
             transition= '0.3s'
             aria-label='custom-icon'
-            onClick={props.onClick} />
+            onClick={onClick} />
     )
 }
 

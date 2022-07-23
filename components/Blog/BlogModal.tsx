@@ -1,6 +1,6 @@
 import { Flex, FormControl, FormErrorMessage, FormLabel, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Textarea } from "@chakra-ui/react"
 import { useRouter } from "next/router";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { blogApi } from "../../config/service/blogApi";
 import { RedButton, ToscaButton } from "./";
@@ -21,7 +21,9 @@ interface IModal {
     defaultContent?: string;
 }
 
-const BlogModal = (props: IModal) => {
+const BlogModal: React.FC<IModal> = (props) => {
+
+    const { id, finalRef, isOpen, onClose, isUpdate, defaultTitle, defaultContent } = props;
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const router = useRouter();
@@ -51,12 +53,12 @@ const BlogModal = (props: IModal) => {
     };
 
     return (
-        <Modal size={['xs','xl','3xl']} finalFocusRef={props.finalRef} isOpen={props.isOpen} onClose={props.onClose}>
+        <Modal size={['xs','xl','3xl']} finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
             <ModalHeader>
                 <Flex justify='center' pt={2} fontFamily='heading' color='custom.400'>
-                    {props.isUpdate ? 'Update Blog': 'Add Blog'}
+                    {isUpdate ? 'Update Blog': 'Add Blog'}
                 </Flex>
             </ModalHeader>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -65,7 +67,7 @@ const BlogModal = (props: IModal) => {
                 <FormControl isInvalid={errors.title !== undefined}>
                     <FormLabel fontWeight={'semibold'}>Title</FormLabel>
                     <Input 
-                        defaultValue={props.defaultTitle} 
+                        defaultValue={defaultTitle} 
                         placeholder='Insert title here' 
                         {...register("title", {
                             required: true, 
@@ -78,7 +80,7 @@ const BlogModal = (props: IModal) => {
                 <FormControl mt={4} isInvalid={errors.content !== undefined}>
                     <FormLabel fontWeight={'semibold'}>Content</FormLabel>
                     <Textarea
-                        defaultValue={props.defaultContent}
+                        defaultValue={defaultContent}
                         placeholder='Insert content here'
                         minHeight={['300px','300px','250px']}
                         {...register("content", {required: true})}
@@ -89,8 +91,8 @@ const BlogModal = (props: IModal) => {
 
             <ModalFooter>
                 <Flex w='100%' justify='center' gap={4}>
-                <ToscaButton type='submit' w='25%' isLoading={loadSubmit} >{props.isUpdate ? 'UPDATE' : 'ADD'}</ToscaButton>
-                <RedButton w='25%' onClick={props.onClose} >CANCEL</RedButton>
+                <ToscaButton type='submit' w='25%' isLoading={loadSubmit} >{isUpdate ? 'UPDATE' : 'ADD'}</ToscaButton>
+                <RedButton w='25%' onClick={onClose} >CANCEL</RedButton>
                 </Flex>
             </ModalFooter>
 
